@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TapBot 定时模拟点击"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 权限状态 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E293B"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="① 权限准备"
+                android:textColor="#38BDF8"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_overlay_status"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="悬浮窗：未开启"
+                    android:textColor="#F87171"
+                    android:textSize="13sp" />
+                <Button
+                    android:id="@+id/btn_overlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开启"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_access_status"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="无障碍：未开启"
+                    android:textColor="#F87171"
+                    android:textSize="13sp" />
+                <Button
+                    android:id="@+id/btn_access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开启"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 目标 App -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E293B"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="② 点击前确保的 App（可留空）"
+                android:textColor="#38BDF8"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/spinner_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/et_pkg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="或填写任意包名，如 com.taobao.taobao"
+                android:textColorHint="#64748B"
+                android:textColor="#E2E8F0"
+                android:background="#0F172A"
+                android:padding="10dp"
+                android:inputType="text"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未就绪策略：目标 App 无法打开时终止并弹通知"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp" />
+
+            <Switch
+                android:id="@+id/switch_wake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="息屏时自动亮屏唤醒（无密码）"
+                android:textColor="#E2E8F0"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- 定时 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E293B"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="③ 定时触发时刻"
+                android:textColor="#38BDF8"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/et_hour"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="时"
+                    android:text="20"
+                    android:gravity="center"
+                    android:textColorHint="#64748B"
+                    android:textColor="#E2E8F0"
+                    android:background="#0F172A"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" : "
+                    android:textColor="#E2E8F0"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_min"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="分"
+                    android:text="00"
+                    android:gravity="center"
+                    android:textColorHint="#64748B"
+                    android:textColor="#E2E8F0"
+                    android:background="#0F172A"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" : "
+                    android:textColor="#E2E8F0"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_sec"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="秒"
+                    android:text="00"
+                    android:gravity="center"
+                    android:textColorHint="#64748B"
+                    android:textColor="#E2E8F0"
+                    android:background="#0F172A"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 脚本 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E293B"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="④ 点击脚本（录制轨迹）"
+                android:textColor="#38BDF8"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="循环次数（-1 无限）："
+                    android:textColor="#E2E8F0"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/et_loop"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:gravity="center"
+                    android:textColor="#E2E8F0"
+                    android:background="#0F172A"
+                    android:padding="8dp"
+                    android:inputType="numberSigned"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开始录制（点屏幕记录轨迹）"
+                android:layout_marginBottom="8dp" />
+
+            <ListView
+                android:id="@+id/list_scripts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#0F172A"
+                android:dividerHeight="1dp" />
+        </LinearLayout>
+
+        <!-- 操作 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btn_schedule"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="开始定时"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_now"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="立即执行"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btn_stop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="停止" />
+        </LinearLayout>
+
+        <!-- 状态 -->
+        <TextView
+            android:id="@+id/tv_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="状态：空闲"
+            android:textColor="#4ADE80"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_countdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="倒计时：--:--:--"
+            android:textColor="#FBBF24"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="进度：-"
+            android:textColor="#E2E8F0"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- 日志 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运行日志"
+            android:textColor="#38BDF8"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:text=""
+            android:textColor="#94A3B8"
+            android:textSize="11sp"
+            android:background="#020617"
+            android:padding="8dp"
+            android:gravity="bottom"
+            android:fontFamily="monospace" />
+
+    </LinearLayout>
+</ScrollView>
